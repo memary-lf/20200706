@@ -12,31 +12,31 @@ def average_score(scores):
     return float(sum(scores.values())) / len(scores.values())
 
 
-def asscending_score(scores):
+def descending_score(scores):
     """
     Sort the input list from largest to smallest.
     """
     scores_list = [(scores[x], x) for x in scores]
-    asscending_list = sorted(scores_list, reverse=True)
-    return [(x[1], x[0]) for x in asscending_list]
+    descending_list = sorted(scores_list, reverse=True)
+    return [(x[1], x[0]) for x in descending_list]
 
 
 def highest_score(scores):
     """
     Find the highest grade and the corresponding name.
     """
-    asscending_list = asscending_score(scores)
-    highest_score = asscending_list[0][1]
-    return [(x[0], x[1]) for x in asscending_list if x[1] == highest_score]
+    descending_list = descending_score(scores)
+    highest_score = descending_list[0][1]
+    return [(x[0], x[1]) for x in descending_list if x[1] == highest_score]
 
 
 def lowest_score(scores):
     """
     Find the lowest grade and the corresponding name.
     """
-    asscending_list = asscending_score(scores)
-    lowest_score = asscending_list[-1][1]
-    return [(x[0], x[1]) for x in asscending_list if x[1] == lowest_score]
+    descending_list = descending_score(scores)
+    lowest_score = descending_list[-1][1]
+    return [(x[0], x[1]) for x in descending_list if x[1] == lowest_score]
 
 
 if __name__ == "__main__":
@@ -53,17 +53,17 @@ if __name__ == "__main__":
         "amazon": 99,
     }
 
-    average_score = average_score(examine_scores)                   #平均分
+    average_score = average_score(examine_scores)  # 平均分
     print("The average grade is: " + str(average_score))
 
-    asscending_score_name = asscending_score(examine_scores)        #降序排列
+    descending_score_name = descending_score(examine_scores)  # 降序排列
     print(
         "The results in descending order of performance are: "
-        + str(asscending_score_name)
+        + str(descending_score_name)
     )
 
-    highest_score_name = highest_score(examine_scores)              #最好成绩
+    highest_score_name = highest_score(examine_scores)  # 最好成绩
     print("The highest grades and corresponding names are: " + str(highest_score_name))
 
-    lowest_score_name = lowest_score(examine_scores)                #最差成绩
+    lowest_score_name = lowest_score(examine_scores)  # 最差成绩
     print("The lowest grades and corresponding names are: " + str(lowest_score_name))

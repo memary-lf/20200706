@@ -41,8 +41,8 @@ print(
     "The number of students with below average scores is " + str(numbers_below_average)
 )
 
-ascending = True
-scores_ascending = sorted(scores, reverse=ascending)
+scores_descending = sorted(scores, reverse=True)
 print(
-    "The results produced in descending order of magnitude are " + str(scores_ascending)
+    "The results produced in descending order of magnitude are "
+    + str(scores_descending)
 )
