@@ -12,7 +12,6 @@
     4.删除指定位置玩家的数据
     5.获取出局玩家的顺序列表
     6.获取最后一个出局的玩家
-    7.迭代玩家方法
 """
 
 
@@ -63,14 +62,14 @@ class Joseph_circle:
         last_player = self.out_players_list[-1]
         return last_player
 
-    def __iter__(self):
-        return self
+    # def __iter__(self):
+    #     return self
 
-    def __next__(self):
-        if self.get_length > 0:
-            return self.input_players_list
-        else:
-            raise StopIteration()
+    # def __next__(self):
+    #     if self.get_length > 0:
+    #         return self.input_players_list
+    #     else:
+    #         raise StopIteration()
 
 if __name__ == "__main__":
     # 测试get_name
