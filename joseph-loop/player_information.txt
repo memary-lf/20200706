@@ -1,5 +1,5 @@
-google man 10
-facebook woman 20
-github man 30
-baidu woman 40
-alibaba woman 50
+google male 10
+facebook female 20
+github male 30
+baidu female 40
+alibaba male 50
