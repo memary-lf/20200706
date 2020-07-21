@@ -2,4 +2,4 @@ google male 10
 facebook female 20
 github male 30
 baidu female 40
-alibaba male 50
+alibaba female 50
