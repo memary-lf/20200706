@@ -1,7 +1,7 @@
 """
     作者：LF
-    功能：存放（类）TxtReader、CsvReader、ZipReader以及函数reader
-    版本：3.0
+    功能：存放父类Reader、子类TxtReader、CsvReader、ZipReader以及函数reader
+    版本：3.0.2
     日期：21/07/2020
     问题描述：1.TxtReader、CsvReader、ZipReader三种类
                可完成对txt、csv、zip文件中玩家信息的读取，输出每一行的信息
@@ -15,8 +15,8 @@
                 4.将ZipReader类中传入的参数file删除，只保留path，
                   从而实现与TxtReader、CsvReader的接口相统一
                 5.修改命名instance为all_reader_instance
-                6.增加了部分测试案例，以确保得到尽可能准确的测试结果
-                7.增加了父类Reader，来实现继承与多态
+                6.增加了父类Reader，来实现继承与多态
+                7.增加了部分测试案例，以确保得到尽可能准确的测试结果
 """
 import zipfile
 
@@ -137,3 +137,8 @@ if __name__ == "__main__":
     assert len(player_list) == 6
     assert player_list[0].split()[2] == "10"
     assert player_list[2].split()[1] == "male"
+
+    #查看Reader是否可以正常调用
+    assert Reader.__subclasses__()[0].ext == ".txt"
+    assert Reader.__subclasses__()[1].ext == ".csv"
+    assert Reader.__subclasses__()[2].ext == ".zip"
