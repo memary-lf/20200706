@@ -1,7 +1,7 @@
 """
     作者：LF
     功能：存放父类Reader、子类TxtReader、CsvReader、ZipReader以及函数reader
-    版本：3.0.2
+    版本：3.0.3
     日期：21/07/2020
     问题描述：1.TxtReader、CsvReader、ZipReader三种类
                可完成对txt、csv、zip文件中玩家信息的读取，输出每一行的信息
@@ -17,6 +17,7 @@
                 5.修改命名instance为all_reader_instance
                 6.增加了父类Reader，来实现继承与多态
                 7.增加了部分测试案例，以确保得到尽可能准确的测试结果
+                8.用"/"判断zip文件——>用".zip/"判断，分割改用".zip"和".zip/"
 """
 import zipfile
 
@@ -74,8 +75,8 @@ class ZipReader(Reader):
 
     # 构造函数
     def __init__(self, path):
-        self.path = path
-        self.zip_path = self.path.split("/")[0] + ".zip"
+        self.path = path.split(".zip")[0] + path.split(".zip")[1]
+        self.zip_path = path.split(".zip/")[0] + ".zip"
         self.zip_file = zipfile.ZipFile(self.zip_path)
 
     # 迭代部分
@@ -97,7 +98,7 @@ def reader(path):
     player_list = []
     for x in Reader.__subclasses__():
         if path.endswith(x.ext):
-            if "/" in path:
+            if ".zip/" in path:
                 all_reader_instance = ZipReader(path)
             else:
                 all_reader_instance = x(path)
@@ -126,14 +127,14 @@ if __name__ == "__main__":
     assert player_list[2].split()[1] == "male"
 
     # 查看zip文件中的txt是否可以读取成功
-    player_list = reader("player_information/player_information.txt")
+    player_list = reader("player_information.zip/player_information.txt")
     # print(player_list)
     assert len(player_list) == 5
     assert player_list[0].split()[2] == "10"
     assert player_list[2].split()[1] == "male"
 
     # 查看zip文件中的csv是否可以读取成功
-    player_list = reader("player_information/player_information.csv")
+    player_list = reader("player_information.zip/player_information.csv")
     assert len(player_list) == 6
     assert player_list[0].split()[2] == "10"
     assert player_list[2].split()[1] == "male"
